@@ -15,7 +15,7 @@ GIST_ID = os.environ['GIST_ID']
 @app.route('/')
 def index():
     content: List[str] = [
-        f'[{repo.name}]({repo.url})'
+        f'[{repo.name}]({repo.clone_url})'
         for repo in github_client.get_organization(ORGANIZATION_NAME).get_team(TEAM_ID).get_repos()
     ]
 
