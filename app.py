@@ -1,6 +1,6 @@
 from typing import List
 
-from chalice import Chalice
+from chalice import Chalice, Response
 from github import Github, Gist, InputFileContent
 import os
 
@@ -24,4 +24,4 @@ def index():
         'repositories.md': InputFileContent(content='  \n'.join(content))
     })
 
-    return ''
+    return Response(status_code=301, body='', headers={'Location': gist.html_url})
